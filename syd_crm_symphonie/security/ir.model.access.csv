@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner_role,res.partner.role,syd_crm_symphonie.model_res_partner_role,base.group_user,1,1,1,1
+access_helpdesk_ticket_sub_type,helpdesk.ticket.sub_type,syd_crm_symphonie.model_helpdesk_ticket_sub_type,base.group_user,1,1,1,1
+access_helpdesk_ticket_macro_type,helpdesk.ticket.macro_type,syd_crm_symphonie.model_helpdesk_ticket_macro_type,base.group_user,1,1,1,1
+
