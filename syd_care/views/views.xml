@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+  
+
+
+		<record id="action_care_app" model="ir.actions.client">
+		        <field name="name">Cart</field>
+		         <field name="target">current</field>
+		        <field name="tag">syd_care.test1_client_action</field>
+		    </record>
+		    
+		    
+		   
+   
+      <menuitem id="care_menu" name="Care" web_icon="syd_care,static/description/icon.png" />
+	 
+	  
+   
+   
+    <menuitem name="Care" action="syd_care.action_care_app" id="syd_care.action_app_menu" parent="syd_care.care_menu" sequence="12"/>
+ 	   
+
+    
+</odoo>

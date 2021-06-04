@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <menuitem
+        id="crm_menu_root"
+        name="CRM"
+        web_icon="syd_crm_symphonie,static/description/icon.png"
+        groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+        sequence="6"/>
+        
+
+        <menuitem
+        id="menu_account"
+        name="My Account"
+        parent="crm_menu_root"
+        
+        sequence="5"/>
+        
+	        <menuitem
+	        id="res_partner_menu_customer"
+	        name="Customer"
+	        parent="menu_account"
+	        action="action_partner_customer_form"
+	        sequence="5"/>
+	        
+	        <menuitem
+	        id="res_partner_menu_vendor"
+	        name="Vendor"
+	        parent="menu_account"
+	        action="action_partner_supplier_form"
+	        sequence="5"/>
+	        
+	         <menuitem
+	        id="res_partner_menu_partner"
+	        name="Partner"
+	        parent="menu_account"
+	        action="action_partner_partner_form"
+	        sequence="5"/>
+      
+		<menuitem
+        id="menu_opportunity"
+        name="My Opportunity"
+        parent="crm_menu_root"
+        action="crm.crm_lead_action_pipeline"
+        sequence="6"/>
+        
+        <menuitem
+        id="menu_ticket"
+        name="My Ticket"
+        parent="crm_menu_root"
+        action="helpdesk.helpdesk_ticket_action_main_my"
+        sequence="7"/>
+        
+        
+</odoo>
