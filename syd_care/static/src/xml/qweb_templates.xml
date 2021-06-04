@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="care_template">
+     
+     	<iframe src='https://care.datalytics.it/' frameborder='0' width='100%' height='100%'></iframe>
+     </t>
+    
+   
+</templates>
