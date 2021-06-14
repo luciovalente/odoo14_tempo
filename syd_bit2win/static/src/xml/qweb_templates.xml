@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+     <t t-name="syd_bit2win_test_1">
+       
+       <ep-cart></ep-cart>
+       	
+       	
+       	
+    </t>
+    
+    <t t-name="syd_bit2win_test_2">
+       
+      <git-users count="4"></git-users>
+<ev-catch></ev-catch>
+       	<ep-category></ep-category>
+       	
+       	<ep-configurator></ep-configurator>
+    </t>
+   
+</templates>
