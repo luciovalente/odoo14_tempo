@@ -1,7 +1,7 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
-    "name": "Care",
+    "name": "Bit2Win WebComponent",
     "version": "14.0.1.0.0",
     "category": "Bit2Win",
     "author": "Rapsodoo Italia",

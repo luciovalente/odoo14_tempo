@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <template id="assets_backend" name="library assets backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+               <script type="text/javascript" src="/syd_bit2win_cart/static/src/js/test1_client_action.js"></script>
+            
+        	
+        </xpath>
+
+       <!--  <xpath expr="//link[last()]" position="after">
+        	        	        	<link rel="stylesheet"   href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        	
+            <link rel="stylesheet" type="text/less" href="/syd_reserve/static/src/scss/reserve.scss"/>
+        	<link rel="stylesheet" type="text/less"  href="/syd_reserve/static/src/lib/materialize.css" />
+        	 
+        </xpath> -->
+    </template>
+    
+    
+    </data>
+</odoo>

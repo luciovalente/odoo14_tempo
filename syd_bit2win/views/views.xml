@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+  
+
+
+		<record id="action_bit2win_app" model="ir.actions.client">
+		        <field name="name">Cart</field>
+		         <field name="target">current</field>
+		        <field name="tag">syd_bit2win.test1_client_action</field>
+		    </record>
+		    
+		    
+		    <record id="action_bit2win_app2" model="ir.actions.client">
+		        <field name="name">Catch</field>
+		         <field name="target">current</field>
+		        <field name="tag">syd_bit2win.test2_client_action</field>
+		    </record>
+   
+      <menuitem id="bit2win_menu" name="Bit2Win" web_icon="syd_bit2win,static/description/icon.png" />
+	 
+	  
+   
+   
+    <menuitem name="Cart" action="syd_bit2win.action_bit2win_app" id="syd_bit2win.action_test1_app_menu" parent="syd_bit2win.bit2win_menu" sequence="12"/>
+ 	   
+
+        <menuitem name="Catch" action="syd_bit2win.action_bit2win_app2" id="syd_bit2win.action_test2_app_menu" parent="syd_bit2win.bit2win_menu" sequence="12"/>
+    
+</odoo>
