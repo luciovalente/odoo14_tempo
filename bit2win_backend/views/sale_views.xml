@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <record id="bit2win_backend_sale_order_form" model="ir.ui.view">
+        <field name="name">bit2win.backend.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="use_bit2win_configurator" invisible="1"/>
+                <button name="open_bit2win_configurator"
+                        type="object"
+                        string="Product Configurator"
+                        attrs="{'invisible': [('use_bit2win_configurator', '=', False)]}"
+                        />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
