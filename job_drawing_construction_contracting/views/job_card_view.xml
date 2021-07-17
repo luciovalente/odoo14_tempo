@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_task_form2_inherit_job_drawing" model="ir.ui.view">
+        <field name="name">Project Task From Inherit Job Drawing</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="google_drawing_link" string="Google Drawing Document">
+                    <button name="create_a_google_drawing" string="Create a Google Drawings" type="object" class="oe_highlight"/>
+                    <field name="google_drawing_link_ids" mode="tree">
+                        <form string="Drawings">
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                </group>
+                                <group>
+                                    <field name="description"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="url"/>
+                                </group>
+                            </group>
+                        </form>
+                        <tree string="Google Drawing Document">
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="url"/>
+                            <button name="open_google_drawing_document" string="Open" type="object" class="oe_highlight"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

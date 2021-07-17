@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_google_drawing_link_employee,google.drawing.link.employee,model_google_drawing_link,base.group_user,1,0,0,0
+access_google_drawing_link_project_user,google.drawing.link.project_user,model_google_drawing_link,project.group_project_user,1,1,1,1
+access_google_drawing_link_portal_user,access_google_drawing_link_portal_user,model_google_drawing_link,base.group_portal,1,0,0,0

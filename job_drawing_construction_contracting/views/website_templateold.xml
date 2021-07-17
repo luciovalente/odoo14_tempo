@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_drawing_website_portal" name="website_date_info_assets" inherit_id="web.assets_frontend">
+           <xpath expr="." position="inside">
+                <!-- All links to CSS and JS files should be added in here. -->
+             <script type="text/javascript" src="/job_drawing_construction_contracting/static/src/js/website_portal.js"></script>
+           </xpath>
+    </template>
+
+    <template id="google_drawing_document" name="Google Drawing Document" customize_show="False">
+        <t t-call="website.layout">
+            <t t-set="portal_drawing_document" t-value="true"/>
+            <span id="portal_drawing_document" t-esc="portal_drawing_document" class="o_hidden"/>
+            <iframe allowfullscreen="true" frameborder="0" height="800" mozallowfullscreen="true"
+                t-att-src="document.url" webkitallowfullscreen="true" width="100%"/>
+        </t>
+    </template>
+
+    <!-- <template id="portal_my_subcontractor_joborder_drawing_document" name="Portal My subcontractor job order: project entries" inherit_id="job_order_start_stop_timer.portal_my_subcontractor_joborder"> -->
+    <template id="portal_my_subcontractor_joborder_drawing_document" name="Portal My subcontractor job order: project entries" inherit_id="project.portal_my_task"> <!-- odoo13 -->
+        <xpath expr="//t[@t-call='portal.portal_record_layout']" position="after"> <!-- odoo13 -->
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <ul class="nav nav-tabs card-header-tabs mt16" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="nav_tabs_drawing_1" data-toggle="tab" href="#drawing_document" role="tab" aria-controls="drawing_document" aria-selected="true">Drawings</a>
+                        </li>
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link active" id="nav_tabs_features_1" data-toggle="tab" href="#document" role="tab" aria-controls="document" aria-selected="true">Contracting Drawings</a>-->
+<!--                        </li>-->
+                    </ul>
+                </t>
+                <t t-set="card_body">
+                    <div class="tab-pane fade show active"
+                        id="drawing_document"
+                        role="tabpanel"
+                        aria-labelledby="nav_tabs_drawing_1">
+                        
+                        <table class="table" id="MonthlyTable">
+                            <thead>
+                                <tr>
+                                    <th>Drawing Name</th>
+                                    <th>Drawing Description</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <t t-foreach="task.google_drawing_link_ids" t-as="drawing_link_id">
+                                <tr>
+                                    <td>
+                                        <span t-field="drawing_link_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="drawing_link_id.description"/>
+                                    </td>
+                                    <td align="right">
+                                        <a class="btn btn-primary btn-md" t-attf-href="/open/drawing_document/#{drawing_link_id.id}?#{keep_query()}" target="new">
+                                            <i class="fa fa-arrow-circle-right" style="font-size:1em;"></i>  Open
+                                        </a>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </xpath>
+<!--        <xpath expr="//div[contains(@class,'panel-body')]" position="after">-->
+<!--            <div class="panel-heading">-->
+<!--                <div class="container" >-->
+<!--                    <t t-if="task.google_drawing_link_ids">-->
+<!--                        <ul class="nav nav-tabs">-->
+<!--                            <li class="active">-->
+<!--                                <a data-toggle="tab" href="#document">Drawings</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                        <div class="tab-content">-->
+<!--                            <div id="document" class="tab-pane fade in active">-->
+<!--                                <table class="table" id="MonthlyTable">-->
+<!--                                    <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th>Drawing Name</th>-->
+<!--                                            <th>Drawing Description</th>-->
+<!--                                            <th></th>-->
+<!--                                        </tr>-->
+<!--                                    </thead>-->
+<!--                                    <t t-foreach="task.google_drawing_link_ids" t-as="drawing_link_id">-->
+<!--                                        <tr>-->
+<!--                                            <td>-->
+<!--                                                <span t-field="drawing_link_id.name"/>-->
+<!--                                            </td>-->
+<!--                                            <td>-->
+<!--                                                <span t-field="drawing_link_id.description"/>-->
+<!--                                            </td>-->
+<!--                                            <td align="right">-->
+<!--                                                <a class="btn btn-primary btn-md" t-attf-href="/open/drawing_document/#{drawing_link_id.id}?#{keep_query()}" target="new">-->
+<!--                                                    <i class="fa fa-arrow-circle-right" style="font-size:1em;"></i>  Open-->
+<!--                                                </a>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                    </t>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </xpath>-->
+    </template>
+</odoo>
