@@ -3,5 +3,5 @@
         <xpath expr="." position="inside">
         	<link rel="stylesheet" type="text/scss" href="/syd_company_asset/static/src/scss/reserve.scss"/>
         </xpath>
-    </template> -->
+    </template> --> 
 </odoo>
