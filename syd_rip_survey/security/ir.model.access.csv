@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rip_survey_user,access_rip_survey_user,model_rip_survey,group_user,1,0,0,0
+access_rip_survey_manager,access_rip_survey_manager,model_rip_survey,group_manager,1,1,1,1
+
+access_rip_survey_page_user,access_rip_survey_page_user,model_rip_survey_page,group_user,1,0,0,0
+access_rip_survey_page_manager,access_rip_survey_page_manager,model_rip_survey_page,group_manager,1,1,1,1
+
+access_rip_survey_question_user,access_rip_survey_question_user,model_rip_survey_question,group_user,1,0,0,0
+access_rip_survey_question_manager,access_rip_survey_question_manager,model_rip_survey_question,group_manager,1,1,1,1
+
+access_rip_survey_question_choice_user,access_rip_survey_question_choice_user,model_rip_survey_question_choice,group_user,1,0,0,0
+access_rip_survey_question_choice_manager,access_rip_survey_question_choice_manager,model_rip_survey_question_choice,group_manager,1,1,1,1

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_rip_survey" model="ir.actions.act_window">
+        <field name="name">Surveys</field>
+        <field name="res_model">rip.survey</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="rip_survey_view_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new survey
+            </p>
+            <p></p>
+        </field>
+    </record>
+
+    <record id="action_rip_survey_page" model="ir.actions.act_window">
+        <field name="name">Questions</field>
+        <field name="res_model">rip.survey.page</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="rip_survey_page_view_tree"/>
+    </record>
+
+    <record id="action_rip_survey_question" model="ir.actions.act_window">
+        <field name="name">Questions</field>
+        <field name="res_model">rip.survey.question</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="rip_survey_question_view_tree"/>
+    </record>
+
+    <menuitem id="menu_survey" name="RIP Survey" web_icon="syd_rip_survey,static/description/icon.png" sequence="45">
+        <menuitem id="menu_main" name="Surveys" sequence="10">
+            <menuitem id="menu_rip_survey" name="Surveys" action="action_rip_survey" sequence="10"/>
+            <menuitem id="menu_rip_survey_page" name="Pages" action="action_rip_survey_page" sequence="20"/>
+            <menuitem id="menu_rip_survey_question" name="Questions" action="action_rip_survey_question" sequence="30"/>
+        </menuitem>
+<!--        <menuitem id="menu_rip_settings" name="Settings" sequence="30">-->
+<!--        </menuitem>-->
+    </menuitem>
+
+</odoo>

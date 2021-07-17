@@ -1,0 +1,213 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="rip_survey_view_tree" model="ir.ui.view">
+        <field name="name">rip.survey.view.tree</field>
+        <field name="model">rip.survey</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="rip_survey_view_form" model="ir.ui.view">
+        <field name="name">rip.survey.form.view</field>
+        <field name="model">rip.survey</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="page_ids" string="Pages">
+                            <tree>
+                                <field name="sequence" widget="handle"/>
+                                <field name="name"/>
+                                <field name="description"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="model_id"/>
+                        <label for="code_to_eval"/>
+                        <div name="code_to_eval">
+                            <field name="code_to_eval"/>
+                            <div style="margin-top:-5px">
+                                <p class="oe_edit_only text-muted mb-2">
+                                    Main goal of the 'code to eval' is to produce final Odoo domain tuples.
+                                    e.g.: '&amp;', ('type_id.code', '=', TYPE), ('preferred_flavour', '=', FLAV)
+                                </p>
+                            </div>
+                        </div>
+                    </group>
+                    <div class="oe_structure">
+                        <p class="mb-3">
+                            Use tags below when populating the code to eval.<br/>
+                        </p>
+                        <div class="bg-light rounded-right border-left border-secondary p-3 mb-5" style="border-left-width: 3px !important;">
+                             <p class="mb-1">
+                                <thead>
+                                    <tr>
+                                        <th width="50%"></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><b>field names</b></td>
+                                        <td><span><field name="available_field_names" readonly="1"/></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>rec</b></td>
+                                        <td>Targeted survey record.</td>
+                                    </tr>
+                                </tbody>
+                             </p>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="rip_survey_page_view_tree" model="ir.ui.view">
+        <field name="name">rip.survey.page.view.tree</field>
+        <field name="model">rip.survey.page</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="rip_survey_page_view_form" model="ir.ui.view">
+        <field name="name">rip.survey.page.view.form</field>
+        <field name="model">rip.survey.page</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="help"/>
+                    </group>
+                    <group>
+                        <field name="question_ids" string="Questions">
+                            <tree>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="type"/>
+                                <field name="field_name"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="rip_survey_question_view_tree" model="ir.ui.view">
+        <field name="name">rip.survey.question.view.tree</field>
+        <field name="model">rip.survey.question</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="rip_survey_question_view_form" model="ir.ui.view">
+        <field name="name">rip.survey.question.view.form</field>
+        <field name="model">rip.survey.question</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="help"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="field_name"/>
+                        </group>
+                    </group>
+                    <group attrs="{'invisible': [('type', 'not in', ['selection','checkbox','radio'])]}">
+                        <field name="choice_ids" string="Choices">
+                            <tree>
+                                <field name="sequence" widget="handle"/>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="help"/>
+                                <field name="field_value"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="rip_survey_question_choice_view_tree" model="ir.ui.view">
+        <field name="name">rip.survey.question.choice.view.tree</field>
+        <field name="model">rip.survey.question.choice</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="help"/>
+                <field name="field_value"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="rip_survey_question_choice_view_form" model="ir.ui.view">
+        <field name="name">rip.survey.question.choice.view.form</field>
+        <field name="model">rip.survey.question.choice</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="help"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="field_value"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
