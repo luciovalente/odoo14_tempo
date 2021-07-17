@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="demo_partner1" model="res.partner">
+            <field name="name">Demo Contact 1</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">Pippo's</field>
+            <field name="street">Via Topolino Rossi, 33</field>
+            <field name="city">Topolinia</field>
+            <field name="state_id" model="res.country.state" search="[('code','ilike','NY')]"/>
+            <field name="zip">97401</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">test03@mail.home</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="demo_partner2" model="res.partner">
+            <field name="name">Demo Contact 2</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="company_name">Pluto's</field>
+            <field name="street">Via J. Bassettoni, 99</field>
+            <field name="city">Topolinia</field>
+            <field name="state_id" model="res.country.state" search="[('code','ilike','NY')]"/>
+            <field name="zip">97411</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="tz">Europe/Brussels</field>
+            <field name="email">test04@mail.home</field>
+            <field name="phone">(441)-695-2334</field>
+        </record>
+
+        <record id="demo_user1" model="res.users">
+            <field name="partner_id" ref="demo_partner1"/>
+            <field name="login">test02@mail.home</field>
+            <field name="password">pippo</field>
+            <field name="signature" type="xml"><span>-- <br/>+Mr Pippo</span></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="groups_id" eval="[(6,0,[ref('base.group_user'), ref('base.group_partner_manager'), ref('base.group_allow_export')])]"/>
+            <field name="image_1920" type="base64" file="base/static/img/user_demo-image.jpg"/>
+        </record>
+
+        <!-- ASSETS -->
+
+        <record id="demo_asset_type1" model="company.asset.type">
+            <field name="name">Asset Type 1</field>
+            <field name="description">Asset Type 1 - description</field>
+            <field name="reservation_type">mono</field>
+        </record>
+
+        <record id="demo_asset_type2" model="company.asset.type">
+            <field name="name">Asset Type 2</field>
+            <field name="description">Asset Type 2 - description</field>
+            <field name="reservation_type">multi</field>
+        </record>
+
+        <record id="demo_asset_item1" model="company.asset.item">
+            <field name="name">Asset 01</field>
+            <field name="description">Asset 01 - description</field>
+            <field name="type_id" ref="demo_asset_type1"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">5</field>
+            <field name="reservation_type">yes</field>
+            <field name="reserved_by_id" ref="demo_partner1"/>
+            <field name="x">0.1</field>
+            <field name="y">0.1</field>
+            <field name="state">reserved</field>
+        </record>
+
+        <record id="demo_asset_item2" model="company.asset.item">
+            <field name="name">Asset 02</field>
+            <field name="description">Asset 02 - description</field>
+            <field name="type_id" ref="demo_asset_type1"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">3</field>
+            <field name="reservation_type">no</field>
+            <field name="x">0.2</field>
+            <field name="y">0.2</field>
+            <field name="state">free</field>
+        </record>
+
+        <record id="demo_asset_item3" model="company.asset.item">
+            <field name="name">Asset 03</field>
+            <field name="description">Asset 03 - description</field>
+            <field name="type_id" ref="demo_asset_type2"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">2</field>
+            <field name="reservation_type">no</field>
+            <field name="reserved_by_id" ref="demo_partner2"/>
+            <field name="x">0.3</field>
+            <field name="y">0.3</field>
+            <field name="state">free</field>
+        </record>
+
+        <record id="demo_asset_item4" model="company.asset.item">
+            <field name="name">Asset 04</field>
+            <field name="description">Asset 04 - description</field>
+            <field name="type_id" ref="demo_asset_type1"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">3</field>
+            <field name="reservation_type">no</field>
+            <field name="x">0.4</field>
+            <field name="y">0.4</field>
+            <field name="state">free</field>
+        </record>
+
+        <record id="demo_asset_item5" model="company.asset.item">
+            <field name="name">Asset 05</field>
+            <field name="description">Asset 05 - description</field>
+            <field name="type_id" ref="demo_asset_type1"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">2</field>
+            <field name="reservation_type">yes</field>
+            <field name="reserved_by_id" ref="demo_partner2"/>
+            <field name="x">0.4</field>
+            <field name="y">0.4</field>
+            <field name="state">reserved</field>
+        </record>
+
+        <record id="demo_asset_item6" model="company.asset.item">
+            <field name="name">Asset 06</field>
+            <field name="description">Asset 06 - description</field>
+            <field name="type_id" ref="demo_asset_type1"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">5</field>
+            <field name="reservation_type">yes</field>
+            <field name="x">0.5</field>
+            <field name="y">0.5</field>
+            <field name="state">free</field>
+        </record>
+
+        <record id="demo_asset_item7" model="company.asset.item">
+            <field name="name">Asset 07</field>
+            <field name="description">Asset 07 - description</field>
+            <field name="type_id" ref="demo_asset_type2"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">3</field>
+            <field name="reservation_type">yes</field>
+            <field name="reserved_by_id" ref="demo_partner2"/>
+            <field name="x">0.6</field>
+            <field name="y">0.6</field>
+            <field name="state">reserved</field>
+        </record>
+
+        <record id="demo_asset_item8" model="company.asset.item">
+            <field name="name">Asset 08</field>
+            <field name="description">Asset 08 - description</field>
+            <field name="type_id" ref="demo_asset_type1"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">8</field>
+            <field name="reservation_type">yes</field>
+            <field name="reserved_by_id" ref="demo_partner1"/>
+            <field name="x">0.7</field>
+            <field name="y">0.7</field>
+            <field name="state">reserved</field>
+        </record>
+
+        <record id="demo_asset_item9" model="company.asset.item">
+            <field name="name">Asset 09</field>
+            <field name="description">Asset 09 - description</field>
+            <field name="type_id" ref="demo_asset_type1"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">7</field>
+            <field name="reservation_type">no</field>
+            <field name="x">0.8</field>
+            <field name="y">0.8</field>
+            <field name="state">free</field>
+        </record>
+
+        <record id="demo_asset_item10" model="company.asset.item">
+            <field name="name">Asset 10</field>
+            <field name="description">Asset 10 - description</field>
+            <field name="type_id" ref="demo_asset_type2"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">2</field>
+            <field name="reservation_type">yes</field>
+            <field name="x">0.9</field>
+            <field name="y">0.9</field>
+            <field name="state">free</field>
+        </record>
+
+        <record id="demo_asset_item11" model="company.asset.item">
+            <field name="name">Asset 11</field>
+            <field name="description">Asset 11 - description</field>
+            <field name="type_id" ref="demo_asset_type1"/>
+            <field name="responsible_id">1</field>
+            <field name="max_places">1</field>
+            <field name="reservation_type">yes</field>
+            <field name="reserved_by_id" ref="demo_partner1"/>
+            <field name="x">1.0</field>
+            <field name="y">1.0</field>
+            <field name="state">reserved</field>
+        </record>
+
+        <!-- BUILDING 1 -->
+
+        <record id="demo_floor1_1" model="company.asset.floor">
+            <field name="name">Floor 1_1</field>
+            <field name="description">Floor 1_1 - description</field>
+            <field name="responsible_id">1</field>
+            <field name="floor_plan" type="base64" file="syd_company_asset/demo/files/floor_plan_1_1.svg"/>
+            <field name="asset_item_ids" eval="[(6,0, [
+                ref('demo_asset_item1'),
+                ref('demo_asset_item3'),
+                ref('demo_asset_item5'),
+            ])]"/>
+        </record>
+
+        <record id="demo_floor1_2" model="company.asset.floor">
+            <field name="name">Floor 1_2</field>
+            <field name="description">Floor 1_2 - description</field>
+            <field name="responsible_id">1</field>
+            <field name="asset_item_ids" eval="[(6,0, [
+                ref('demo_asset_item7'),
+                ref('demo_asset_item9'),
+                ref('demo_asset_item11'),
+            ])]"/>
+        </record>
+
+        <record id="demo_building1" model="company.asset.building">
+            <field name="company_id">1</field>
+            <field name="name">Building 1</field>
+            <field name="description">Building 1 - description</field>
+            <field name="responsible_id">1</field>
+            <field name="floor_ids" eval="[(6,0, [
+                ref('demo_floor1_1'),
+                ref('demo_floor1_2')
+            ])]"/>
+        </record>
+
+        <!-- BUILDING 2 -->
+
+        <record id="demo_floor2_1" model="company.asset.floor">
+            <field name="name">Floor 2_1</field>
+            <field name="description">Floor 2_1 - description</field>
+            <field name="responsible_id">1</field>
+            <field name="asset_item_ids" eval="[(6,0, [
+                ref('demo_asset_item4'),
+            ])]"/>
+        </record>
+
+        <record id="demo_floor2_2" model="company.asset.floor">
+            <field name="name">Floor 2_2</field>
+            <field name="description">Floor 2_2 - description</field>
+            <field name="responsible_id">1</field>
+            <field name="floor_plan" type="base64" file="syd_company_asset/demo/files/floor_plan_2_2.svg"/>
+            <field name="asset_item_ids" eval="[(6,0, [
+                ref('demo_asset_item2'),
+                ref('demo_asset_item10'),
+            ])]"/>
+        </record>
+
+        <record id="demo_floor2_3" model="company.asset.floor">
+            <field name="name">Floor 2_3</field>
+            <field name="description">Floor 2_3 - description</field>
+            <field name="responsible_id">1</field>
+            <field name="asset_item_ids" eval="[(6,0, [
+                ref('demo_asset_item6'),
+                ref('demo_asset_item8'),
+            ])]"/>
+        </record>
+
+        <record id="demo_building2" model="company.asset.building">
+            <field name="company_id">1</field>
+            <field name="name">Building 2</field>
+            <field name="description">Building 2 - description</field>
+            <field name="responsible_id">1</field>
+            <field name="floor_ids" eval="[(6,0, [
+                ref('demo_floor2_1'),
+                ref('demo_floor2_2'),
+                ref('demo_floor2_3')
+            ])]"/>
+        </record>
+
+    </data>
+</odoo>

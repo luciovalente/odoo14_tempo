@@ -1,0 +1,114 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+    xmlns:rng="http://relaxng.org/ns/structure/1.0">
+    <define name="pin_map">
+        <element name="pin_map">
+            <optional>
+                <attribute name="label"/>
+            </optional>
+            <optional>
+                <attribute name="width"/>
+            </optional>
+            <optional>
+                <attribute name="height"/>
+            </optional>
+            <optional>
+                <attribute name="default_order"/>
+            </optional>
+            <optional>
+                <attribute name="numbering"/>
+            </optional>
+            <optional>
+                <attribute name="hide_name"/>
+            </optional>
+            <optional>
+                <attribute name="hide_description"/>
+            </optional>
+            <optional>
+                <attribute name="panel_title" />
+            </optional>
+            <optional>
+                <attribute name="hide_title"/>
+            </optional>
+            <optional>
+                <attribute name="limit"/>
+            </optional>
+            <zeroOrMore>
+                <optional>
+                    <element name="title">
+                        <attribute name="label"/>
+                    </element>
+                </optional>
+            </zeroOrMore>
+            <ref name="levels"/>
+        </element>
+    </define>
+
+    <define name="levels">
+        <element name="levels">
+            <element name="id">
+                <attribute name="field"/>
+            </element>
+            <element name="map">
+                <attribute name="field"/>
+            </element>
+            <element name="title">
+                <attribute name="field"/>
+                <attribute name="label"/>
+            </element>
+            <ref name="locations"/>
+        </element>
+    </define>
+
+    <define name="locations">
+        <element name="locations">
+            <attribute name="field"/>
+            <element name="id">
+                <attribute name="field"/>
+            </element>
+            <element name="title">
+                <attribute name="field"/>
+                <attribute name="label"/>
+            </element>
+            <element name="about">
+                <attribute name="field"/>
+                <attribute name="label"/>
+            </element>
+            <element name="description">
+                <attribute name="field"/>
+                <attribute name="label"/>
+            </element>
+            <element name="category">
+                <attribute name="field"/>
+                <attribute name="label"/>
+            </element>
+            <element name="x">
+                <attribute name="field"/>
+                <attribute name="label"/>
+            </element>
+            <element name="y">
+                <attribute name="field"/>
+                <attribute name="label"/>
+            </element>
+            <element name="user_id">
+                <attribute name="field"/>
+                <attribute name="label"/>
+            </element>
+            <ref name="location_default"/>
+        </element>
+    </define>
+
+    <define name="location_default">
+        <element name="default">
+            <oneOrMore>
+                <element name="set">
+                    <attribute name="field"/>
+                    <attribute name="from"/>
+                </element>
+            </oneOrMore>
+        </element>
+    </define>
+
+    <start>
+        <ref name="pin_map"/>
+    </start>
+</grammar>

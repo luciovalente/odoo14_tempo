@@ -1,0 +1,548 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="company_asset_building_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.building.view.tree</field>
+        <field name="model">company.asset.building</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="survey_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="company_asset_building_view_kanban" model="ir.ui.view">
+        <field name="name">company.asset.building.view.kanban</field>
+        <field name="model">company.asset.building</field>
+        <field name="arch" type="xml">
+            <kanban string="Company Asset Building Model">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_card_content">
+                                <field name="name" modifiers="{}"/>
+                                <field display="full" name="image_128" options="{&quot;size&quot;:[0,90]}" widget="image"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="company_asset_building_view_form" model="ir.ui.view">
+        <field name="name">company.asset.building.form.view</field>
+        <field name="model">company.asset.building</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_show_floor_plans" string="Floor Plans" type="object" class="oe_button" icon="fa-map"/>
+	                    <button class="oe_stat_button" name="action_view_assets" type="object" icon="fa-sitemap" attrs="{'invisible': [('asset_item_ids_count', '=', 0)]}">
+		                    <div class="o_field_widget o_stat_info">
+		                        <span class="o_stat_value"><field name="asset_item_ids_count"/></span>
+		                        <span class="o_stat_text">Building Assets</span>
+		                    </div>
+	                	</button>
+                	 </div>
+                    <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "image_128"}'/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="code"/>
+                        <field name="partner_id" string="Address"/>
+                        <field name="responsible_id"/>
+                    </group>
+                    <notebook>
+                    	<page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Floors">
+                            <field name="floor_ids">
+                                <tree>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="code"/>
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="floor_plan"/>
+                                    <button icon="fa-map" type="object" name="action_show_floor_plan_map"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Survey">
+                            <group>
+                                <field name="survey_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_asset_floor_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.floor.view.tree</field>
+        <field name="model">company.asset.floor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="company_asset_floor_view_form" model="ir.ui.view">
+        <field name="name">company.asset.floor.view.form</field>
+        <field name="model">company.asset.floor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                	<div class="oe_button_box" name="button_box">
+	                    <button class="oe_stat_button" name="action_view_assets" type="object" icon="fa-sitemap" attrs="{'invisible': [('asset_item_ids_count', '=', 0)]}">
+		                    <div class="o_field_widget o_stat_info">
+		                        <span class="o_stat_value"><field name="asset_item_ids_count"/></span>
+		                        <span class="o_stat_text">Floor Assets</span>
+		                    </div>
+	                	</button>
+                	 </div>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                    	<page string="Description">
+                    		<field name="description"/>
+                    	</page>
+                        <page name="assets" string="Assets">
+                            <field name="asset_item_ids" string="Assets">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="x"/>
+                                    <field name="y"/>
+                                    <field name="reservation_type"/>
+                                    <field name="reserved_by_id"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="floor_plan" string="Floor Plan">
+                            <group>
+                                <field name="floor_plan"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_asset_floor_view_pin_map" model="ir.ui.view">
+        <field name="name">company.asset.floor.view.pin_map</field>
+        <field name="model">company.asset.floor</field>
+        <field name="arch" type="xml">
+            <pin_map width="1000" height="1000">
+<!--                <field name="name" map_to="title"/>-->
+<!--                <field id="id" name="asset_item_ids" map_to="locations">-->
+<!--                    <field name="name" string="" map_to="title"/>-->
+<!--                    <field name="description" string="" map_to="description"/>-->
+<!--                    <field name="x" string="" map_to="x"/>-->
+<!--                    <field name="y" string="" map_to="y"/>-->
+<!--                </field>-->
+                <title label="Building Map"/>
+                <levels>
+                    <id field="id"/>
+                    <map field="internal_floor_plan_url"/>
+                    <title field="display_name" label=""/>
+                    <locations field="asset_item_ids">
+                        <id field="id"/>
+                        <title field="name" label=""/>
+                        <about field="" label=""/>
+                        <description field="description" label=""/>
+                        <category field="" label=""/>
+                        <x field="x" label=""/>
+                        <y field="y" label=""/>
+                        <user_id field="responsible_id" label=""/>
+                        <default>
+                            <set field="x" from="x"/>
+                            <set field="y" from="y"/>
+                            <set field="reserved_by_id" from="user_id"/>
+                        </default>
+                    </locations>
+                </levels>
+            </pin_map>
+        </field>
+    </record>
+
+    <record id="company_asset_item_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.item.view.tree</field>
+        <field name="model">company.asset.item</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="type_id"/>
+            </tree>
+        </field>
+    </record>
+
+   <record id="company_asset_item_view_kanban" model="ir.ui.view">
+        <field name="name">company.asset.item.view.kanban</field>
+        <field name="model">company.asset.item</field>
+        <field name="arch" type="xml">
+            <kanban string="Company Asset Item Model">
+                <templates><t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                        <div class="o_kanban_card_content">
+                            <field name="name" modifiers="{}"/>
+                        </div></div></t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="company_asset_item_view_form" model="ir.ui.view">
+        <field name="name">company.asset.item.view.form</field>
+        <field name="model">company.asset.item</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type_id"/>
+                            <field name="code"/>
+                         </group>
+                         <group attrs="{'invisible':[('code','=',False)]}">
+                            <field class="offset-1" name="qrcode" readonly="True" widget="image"/>
+                        </group>
+                    </group>
+                    <notebook>
+                    	<page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="Reservation">
+                        	<group>
+                                <field name="responsible_id"/>
+                                <field name="max_places"/>
+                                <field name="reservation_type"/>
+                                <field name="reserved_by_id" attrs="{'invisible':[('reservation_type','!=','auto')]}"/>
+                            </group>
+                        </page>
+                        <page string="Rules">
+                    		<group>
+                    			<field name="reservation_rule_id"/>
+                    			<field name="checkin_rule_id"/>
+                    		</group>
+                    	</page>
+                        <page string="Equipment">
+                        	<group>
+                                <field name="equipment_ids" string="Equipments" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Building">
+                        	<group>
+                                <field name="parent_id"/>
+                                <field name="building_id"/>
+                                <field name="floor_id"/>
+                            </group>
+                        </page>
+                        <page string="Product">
+                        	<group>
+                        	    <field name="product_id"/>
+                            </group>
+                        </page>
+                        <page string="Valuation">
+                            <field name="valuation_ids" string="Valuations">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="type_id"/>
+                                    <field name="score"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Coordinates">
+                            <group>
+                                <field name="x" readonly="1"/>
+                                <field name="y" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" options="{'post_refresh':True}" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_asset_type_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.item.type.view.tree</field>
+        <field name="model">company.asset.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="image_1920" widget="image" options='{"size": [16,16]}'/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="description"/>
+           </tree>
+        </field>
+    </record>
+
+    <record id="company_asset_type_view_form" model="ir.ui.view">
+        <field name="name">company.asset.type.view.form</field>
+        <field name="model">company.asset.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="icon" widget="image" options='{"size": [32, 32]}'/>
+                       	</group>
+                       	<group>
+                            <field name="image_1920" nolabel="1" widget="image" class="oe_avatar" options='{"preview_image": "image_128"}'/>
+                        </group>
+                    </group>
+                    <notebook>
+                    	<page string="Description">
+                    		<field name="description"/>
+                    	</page>
+                    	<page string="Rules">
+                    		<group>
+                    			<field name="reservation_rule_id"/>
+                    			<field name="checkin_rule_id"/>
+                    		</group>
+                    	</page>
+                        <page string="Valuation">
+                            <field name="valuation_ids" string="Valuations">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="type_id"/>
+                                    <field name="score"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_asset_equipment_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.equipment.view.tree</field>
+        <field name="model">company.asset.equipment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="type_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="company_asset_equipment_view_form" model="ir.ui.view">
+        <field name="name">company.asset.equipment.view.form</field>
+        <field name="model">company.asset.equipment</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="type_id"/>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                    	<page string="Description">
+                    		<field name="description"/>
+                    	</page>
+                        <page string="Real Equipment">
+                            <group>
+                            <field name="maintenance_equipment_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_asset_equipment_type_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.equipment.type.view.tree</field>
+        <field name="model">company.asset.equipment.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="company_asset_equipment_type_view_form" model="ir.ui.view">
+        <field name="name">company.asset.equipment.type.view.form</field>
+        <field name="model">company.asset.equipment.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                    	<page string="Description">
+                    		<field name="description"/>
+                    	</page>
+                    	<page string="Producs">
+                    		<group>
+                    			<field name="product_id"/>
+                    		</group>
+                    	</page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_asset_valuation_type_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.valuation.type.view.tree</field>
+        <field name="model">company.asset.valuation.type</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="company_asset_valuation_type_view_form" model="ir.ui.view">
+        <field name="name">company.asset.valuation.type.view.form</field>
+        <field name="model">company.asset.valuation.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="company_asset_reservation_search_view" model="ir.ui.view">
+        <field name="name">company.asset.reservation.search.view</field>
+        <field name="model">company.asset.reservation</field>
+        <field name="arch" type="xml">
+            <search string="Reservation">
+                <field name="asset_item_id"/>
+                <field name="reserved_by_id"/>
+                <filter name="without_checkin" string="Not Started" domain="[[&quot;date_checkin&quot;,&quot;=&quot;,False]]"/>
+                <filter name="in_progress" string="In Progress" domain="[[&quot;date_checkin&quot;,&quot;!=&quot;,False],[&quot;date_checkout&quot;,&quot;=&quot;,False]]"/>
+                <filter name="closed" string="Closed" domain="[[&quot;date_checkout&quot;,&quot;!=&quot;,False]]"/>
+                <group name="groups">
+                    <filter name="group_reserved_by_id" string="Reserved By" context="{'group_by': 'reserved_by_id'}"/>
+                    <filter name="group_asset_item_id" string="Asset Item" context="{'group_by': 'asset_item_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="company_asset_reservation_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.reservation.view.tree</field>
+        <field name="model">company.asset.reservation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reserved_by_id"/>
+                <field name="asset_item_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="date_checkin"/>
+                <field name="date_checkout"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="company_asset_reservation_view_gantt" model="ir.ui.view">
+        <field name="name">company.asset.reservation.view.gantt</field>
+        <field name="model">company.asset.reservation</field>
+        <field name="arch" type="xml">
+            <gantt date_start="date_from" date_stop="date_to" string="Reservation Gantt View"></gantt>
+        </field>
+    </record>
+
+    <record id="company_asset_reservation_view_calendar" model="ir.ui.view">
+        <field name="name">company.asset.reservation.view.calendar</field>
+        <field name="model">company.asset.reservation</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_from" date_stop="date_to" string="Calendar view for company.asset.reservation"></calendar>
+        </field>
+    </record>
+
+    <record id="company_asset_reservation_view_form" model="ir.ui.view">
+        <field name="name">company.asset.reservation.view.form</field>
+        <field name="model">company.asset.reservation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="asset_item_id"/>
+                            <field name="reserved_by_id"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="date_checkin"/>
+                            <field name="date_checkout"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" options="{'post_refresh':True}" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+	<record id="company_reservation_rule_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.reservation.rule.view.tree</field>
+        <field name="model">company.asset.reservation.rule</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+
+
+                <field name="name"/>
+                <field name="group_ids" widget="many2many_tags"/>
+                <field name="model" invisible="1"/>
+                <field name="domain"  widget="domain" options="{'model': 'model', 'in_dialog': False}" invisible="1"/>
+           </tree>
+        </field>
+    </record>
+
+    <record id="company_reservation_checkin_view_tree" model="ir.ui.view">
+        <field name="name">company.asset.checkin.rule.view.tree</field>
+        <field name="model">company.asset.checkin.rule</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="minutes_before_checkin"/>
+                <field name="minutes_to_unreserve"/>
+                <field name="qrcode_only"/>
+                <field name="automated_checkin"/>
+           </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_company_asset_building" model="ir.actions.act_window">
+        <field name="name">Company Asset Buildings</field>
+        <field name="res_model">company.asset.building</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_id" ref="company_asset_building_view_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new company building
+            </p>
+            <p></p>
+        </field>
+    </record>
+
+    <record id="action_company_asset_floor" model="ir.actions.act_window">
+        <field name="name">Company Asset Floors</field>
+        <field name="res_model">company.asset.floor</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="company_asset_floor_view_tree"/>
+    </record>
+
+    <record id="action_company_asset_item" model="ir.actions.act_window">
+        <field name="name">Company Asset Items</field>
+        <field name="res_model">company.asset.item</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="company_asset_item_view_tree"/>
+    </record>
+
+    <record id="action_company_asset_equipment" model="ir.actions.act_window">
+        <field name="name">Company Asset Equipments</field>
+        <field name="res_model">company.asset.equipment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="company_asset_equipment_view_tree"/>
+    </record>
+
+    <record id="action_company_asset_reservations" model="ir.actions.act_window">
+        <field name="name">Company Asset Reservation</field>
+        <field name="res_model">company.asset.reservation</field>
+        <field name="view_mode">tree,form,gantt,calendar</field>
+         <field name="search_view_id" ref="company_asset_reservation_search_view"/>
+
+        <field name="view_id" ref="company_asset_reservation_view_tree"/>
+    </record>
+
+    <record id="action_company_asset_type" model="ir.actions.act_window">
+        <field name="name">Company Asset Type</field>
+        <field name="res_model">company.asset.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="company_asset_type_view_tree"/>
+    </record>
+
+    <record id="action_company_asset_equipment_type" model="ir.actions.act_window">
+        <field name="name">Company Asset Equipment Type</field>
+        <field name="res_model">company.asset.equipment.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="company_asset_equipment_type_view_tree"/>
+    </record>
+
+    <record id="action_company_asset_valuation_type" model="ir.actions.act_window">
+        <field name="name">Company Asset Valuation Type</field>
+        <field name="res_model">company.asset.valuation.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="company_asset_valuation_type_view_tree"/>
+    </record>
+	
+	
+	<record id="action_company_asset_reservation_rule" model="ir.actions.act_window">
+        <field name="name">Reservation Rule</field>
+        <field name="res_model">company.asset.reservation.rule</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="company_reservation_rule_view_tree"/>
+    </record>
+    
+    
+    <record id="action_company_asset_checkin_rule" model="ir.actions.act_window">
+        <field name="name">Checkin Rule</field>
+        <field name="res_model">company.asset.checkin.rule</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="company_reservation_checkin_view_tree"/>
+    </record>
+	
+    <menuitem id="menu_company_asset" name="N.E.W." web_icon="syd_company_asset,static/description/icon.jpg" sequence="40">
+        <menuitem id="menu_operations" name="Building Operations" sequence="10">
+            <menuitem id="menu_company_asset_building" name="Buildings" action="action_company_asset_building" sequence="10"/>
+            <menuitem id="menu_company_asset_floor" name="Floors" action="action_company_asset_floor" sequence="20"/>
+            <menuitem id="menu_company_asset_item" name="Assets" action="action_company_asset_item" sequence="30"/>
+            <menuitem id="menu_company_asset_equipment" name="Equipments" action="action_company_asset_equipment" sequence="40"/>
+        </menuitem>
+        <menuitem id="menu_reservations" name="Reservation" sequence="20">
+            <menuitem id="menu_company_asset_reservation" name="Reservations" action="action_company_asset_reservations" sequence="10"/>
+        </menuitem>
+        <menuitem id="menu_rules" name="Rules" sequence="25">
+            <menuitem id="menu_company_asset_reservation_rule" name="Reservation Rule" action="action_company_asset_reservation_rule" sequence="10"/>
+        	<menuitem id="menu_company_asset_checkin_rule" name="Checkin Rule" action="action_company_asset_checkin_rule" sequence="10"/>
+        	
+        </menuitem>
+        <menuitem id="menu_settings" name="Settings" sequence="30">
+            <menuitem id="menu_company_asset_type" name="Asset Types" action="action_company_asset_type" sequence="10"/>
+            <menuitem id="menu_company_asset_equipment_type" name="Equipment Types" action="action_company_asset_equipment_type" sequence="20"/>
+            <menuitem id="menu_company_asset_valuation_type" name="Valuation Types" action="action_company_asset_valuation_type" sequence="30"/>
+        </menuitem>
+    </menuitem>
+
+</odoo>

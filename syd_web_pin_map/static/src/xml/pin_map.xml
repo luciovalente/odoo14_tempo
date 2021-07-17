@@ -1,0 +1,17 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="syd_web_pin_map.MapRenderer" owl="1">
+        <div class="map-container o_map_view row no-gutters">
+            <ul t-if="props.canRMBClick" class="o_pin_map_context_menu">
+                <li data-action="add_new_asset">Add new asset</li>
+            </ul>
+            <div class="o_map_debug col-md-12 col-lg-12"/>
+            <div class="o_map_container col-md-12 col-lg-12" t-ref="mapContainer"/>
+        </div>
+    </t>
+
+    <t t-name="syd_web_pin_map.buttons">
+    </t>
+
+</templates>

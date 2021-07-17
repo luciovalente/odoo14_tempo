@@ -1,0 +1,53 @@
+.o_main_navbar {
+	background-color:#1898D9 !important;
+	
+}
+
+
+.o_main_navbar > a:hover, .o_main_navbar > a:focus, .o_main_navbar > button:hover, .o_main_navbar > button:focus {
+    background-color: #007AC9!important;
+}
+
+.o_main_navbar > ul > li > a:hover, .o_main_navbar > ul > li > label:hover {
+   background-color: #007AC9!important;
+}
+
+.btn-primary {
+    color: #FFFFFF;
+    background-color:#0d47a1 !important;
+    border-color: #FFFFFF;
+}
+
+
+.o_main_navbar .show .dropdown-toggle {
+    background-color:#1e88e5 !important;
+}
+
+.o_MessagingMenu_counter {
+    background-color: #003478!important;
+}
+
+.table {
+    color: #072842!important;
+}
+
+.o_list_view .o_list_table thead {
+    color: #072842!important;
+ }
+ 
+ .o_dropdown:hover .o_dropdown_toggler_btn, .o_dropdown.show .o_dropdown_toggler_btn {
+    color: #072842!important;
+}
+
+.breadcrumb-item.active {
+    color: #733F94!important;
+}
+
+.btn-secondary.fa:not(.fa-search) {
+    color: #007AC9!important;
+}
+
+.o_form_view .oe_button_box .btn.oe_stat_button {
+    color: #007AC9!important;
+    
+ }

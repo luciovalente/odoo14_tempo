@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem id="main_menu_restapi" name="Company Asset"
+			web_icon="syd_rest_in_peace,static/description/icon.png" />
+	</data>
+</odoo>
